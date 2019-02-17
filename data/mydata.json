@@ -1,20 +1,20 @@
 {
     "video": {
         "tag": "video",
-        "testFile": "data/TestPages/video.html"
+        "testFile": "data/TestPages/Tags/video.html"
     },
     "audio": {
         "tag": "audio",
-        "testFile": "data/TestPages/audio.html"
+        "testFile": "data/TestPages/Tags/audio.html"
     },
     "contenteditable": {
         "tagAttribute": "contenteditable",
         "isAttribute": true,
-        "testFile": "data/TestPages/contenteditable.html"
+        "testFile": "data/TestPages/Attributes/contenteditable.html"
     },
     "dragndrop": {
         "tagAttribute": "draggable",
         "isAttribute": true,
-        "testFile": "data/TestPages/draggable.html"
+        "testFile": "data/TestPages/Attributes/dragndrop.html"
     }
 }
