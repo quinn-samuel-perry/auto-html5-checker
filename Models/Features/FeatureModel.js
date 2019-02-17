@@ -10,6 +10,10 @@ class FeatureModel {
         this.selector = false
         this.comparison = 'OR' // should be specified for 
 
+        this.tagName = ''
+        this.tagAttribute = ''
+        this.ignore = false
+
         this.Selector_OR = comparisonOutput => comparisonOutput.filter(x => x != null).length != 0
         this.Selector_AND = comparisonOutput => comparisonOutput.filter(x => x != null).length == comparisonOutput.length
         // this.Selector_XOR = comparisonOutput => comparisonOutput.filter(x => x != null).length == comparisonOutput.length / 2
@@ -69,6 +73,8 @@ class FeatureModel {
         const myDataThings = mystuff[this.StandardModel.keyname]
 
         if (myDataThings != null) {
+            this.ignore = myDataThings.ignore
+
             this.testFile = myDataThings.testFile
             this.tagName = myDataThings.tag
 

@@ -29,5 +29,48 @@
             "aside"
         ],
         "testFile": "data/TestPages/Tags/html5semantics.html"
+    },
+    "svg-html5": {
+        "tag": "svg",
+        "testFile": "data/TestPages/Tags/svg.html"
+    },
+    "webworkers": {
+        "ignore": true
+    },
+    "hashchange": {
+        "ignore": true
+    },
+    "sharedworkers": {
+        "ignore": true
+    },
+    "canvas": {
+        "tag": "canvas",
+        "testFile": "data/TestPages/Tags/canvas.html"
+    },
+    "canvas-text": {
+        "ignore": true
+    },
+    "namevalue-storage": {
+        "ignore": true
+    },
+    "online-status": {
+        "ignore": true
+    },
+    "eventsource": {
+        "ignore": true
+    },
+    "x-doc-messaging": {
+        "ignore": true
+    },
+    "xhtml": {
+        "ignore": true
+    },
+    "websockets": {
+        "ignore": true
+    },
+    "hidden": {
+        /* also requires searching css*/
+        "tagAttribute": "hidden",
+        "testFile": "data/TestPages/Attributes/hidden.html"
     }
 }

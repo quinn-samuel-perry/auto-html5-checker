@@ -7,8 +7,12 @@ class HtmlFeature extends FeatureModel {
     }
     // check if this feature applies to this page/script
     appliesToPage(htmlString) {
-        // this.getTagName()
         this.loadDataFile()
+        if (this.ignore) {
+            console.log(`Ignoring feature ${this.StandardModel.keyname}, for some reason probably`)
+            return true
+        }
+        // this.getTagName()
         let applies = false
         if (this.isAttribute) {
             // selector tag name
