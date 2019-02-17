@@ -1,7 +1,20 @@
 {
     "video": {
         "tag": "video",
-        "selector": false,
         "testFile": "data/TestPages/video.html"
+    },
+    "audio": {
+        "tag": "audio",
+        "testFile": "data/TestPages/audio.html"
+    },
+    "contenteditable": {
+        "tagAttribute": "contenteditable",
+        "isAttribute": true,
+        "testFile": "data/TestPages/contenteditable.html"
+    },
+    "dragndrop": {
+        "tagAttribute": "draggable",
+        "isAttribute": true,
+        "testFile": "data/TestPages/draggable.html"
     }
 }
