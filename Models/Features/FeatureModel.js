@@ -8,7 +8,11 @@ class FeatureModel {
         this.testFile = null
         this.dataLocation = 'data/mydata.json'
         this.selector = false
-        // this.spec = featureModel.spec
+        this.comparison = 'OR' // should be specified for 
+
+        this.Selector_OR = comparisonOutput => comparisonOutput.filter(x => x != null).length != 0
+        this.Selector_AND = comparisonOutput => comparisonOutput.filter(x => x != null).length == comparisonOutput.length
+        // this.Selector_XOR = comparisonOutput => comparisonOutput.filter(x => x != null).length == comparisonOutput.length / 2
     }
     loadTestData() {
         // load the html test file, for reasons 
@@ -50,17 +54,13 @@ class FeatureModel {
 
         if (htmlString != "" && htmlString != null) {
             const dom = new JSDOM(htmlString)
-            //get html element
-            const document = dom.window.document
-            const body = document.body
-            // body.toString()
-            const tagNameInstances = body.querySelectorAll(this.tagName)
-            // console.info(tagNameInstances)
-            if (tagNameInstances == null) {
-                // console.warn(`Tag ${this.tagName} could not be found within file ${this.testFile}`)
-                return false
-            }
-            return tagNameInstances
+            //get body element
+            const body = dom.window.document.body
+
+            if (Array.isArray(this.tagName)) {
+                return this.tagName.map(x => body.querySelectorAll(x))
+            } else
+                return body.querySelectorAll(this.tagName)
         }
         return false
     }
@@ -74,14 +74,22 @@ class FeatureModel {
         if (myDataThings != null) {
             this.testFile = myDataThings.testFile
             this.tagName = myDataThings.tag
-            this.tagAttribute = myDataThings.tagAttribute
+
             this.isAttribute = myDataThings.isAttribute
+            this.tagAttribute = myDataThings.tagAttribute
+
         }
     }
     loadFile(filePath) {
         var myBuffer = fs.readFileSync(filePath)
         const mah_string = myBuffer.toString('utf-8')
         return mah_string
+    }
+
+    SelectorComparison(comparisonOutput) {
+        if (this.comparison === 'OR')
+            return this.Selector_OR(comparisonOutput)
+
     }
 }
 

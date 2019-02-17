@@ -17,13 +17,17 @@ class HtmlFeature extends FeatureModel {
             // lookup tag name
             applies = this.searchHtmlTag(htmlString)
         }
+        //convert to array for comparison check
+        applies = Array.from(applies)
+        // default Comparison Selector is OR
+        this.SelectorComparison(applies)
+
         if (applies) {
             // console.info(`Found ${searchTagOutput.length} instances of <${this.tagName}> in page`)
-            return true
         } else {
             // console.info(`This HTML feature does not apply to the page`)
-            return false
         }
+        return applies
     }
 
 }
