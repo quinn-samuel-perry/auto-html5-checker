@@ -1,0 +1,7 @@
+{
+    "video": {
+        "tag": "video",
+        "selector": false,
+        "testFile": "data/TestPages/video.html"
+    }
+}
