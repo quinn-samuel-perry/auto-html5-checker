@@ -2,7 +2,8 @@ const AgentModel = require('./AgentModel')
 const EraModel = require('./EraModel')
 const StatusModel = require('./StatusModel')
 const CategoryModel = require('./CategoryModel')
-const DataModel = require('./DataModel')
+const StandardModel = require('./Standards/StandardModel')
+const LivingStandardModel = require('./Standards/LivingStandardFeature')
 
 class CanIUseModel {
     constructor(dataModel) {
@@ -26,7 +27,7 @@ class CanIUseModel {
         this.LoadCategories(dataModel.cats)
         // console.table(this.categories)
 
-        this.LoadData(dataModel.data)
+        this.LoadFeatures(dataModel.data)
         //console.table(this.datas)
 
     }
@@ -58,12 +59,17 @@ class CanIUseModel {
             this.categories.push(newCategoryModel)
         });
     }
-    LoadData(dataObjects) {
-        Object.keys(dataObjects).forEach(objKey => {
-            var dataObject = dataObjects[objKey]
-            var newDataModel = new DataModel(objKey, dataObject)
-            this.datas.push(newDataModel)
-            console.table(newDataModel)
+    LoadFeatures(featureObjects) {
+        Object.keys(featureObjects).forEach(objKey => {
+            var featureObject = featureObjects[objKey]
+            var newFeatureModel = null
+            if (featureObject.status == "ls") {
+                newFeatureModel = new LivingStandardModel(objKey, featureObject)
+            } else {
+                // newFeatureModel = new FeatureModels.FeatureModel(objKey, featureObject)
+            }
+            // newFeatureModel.getTagName()
+            this.datas.push(newFeatureModel)
         });
     }
 }
