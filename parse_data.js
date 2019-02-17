@@ -13,3 +13,4 @@ const canIUseDataModel = loadCanIUseBufferIntoCanIUseModelTheseFunctionNamesAreL
 
 const mah_model = new CanIUseModel(canIUseDataModel);
 
+mah_model.CheckFeatureOnPage_html()

@@ -6,8 +6,8 @@ class LivingStandardModel extends StandardModel {
         super(featureKey, featureObject)
         this.htmlProviderString = "html.spec.whatwg.org"
         this.domProviderString = "dom.spec.whatwg.org"
-        this.initFeature(featureObject)
         this.parsedHtml = false
+        this.initFeature(featureObject)
     }
     isHtmlFeature() {
         return this.spec.indexOf(this.htmlProviderString) > -1
