@@ -12,24 +12,19 @@ class CanIUseModel {
         this.statuses = []
         this.categories = []
         this.lastUpdated = dataModel.updated
-        // i called this datas, because data wasn't a nice pretty salmon colour in my editor
-        this.datas = []
+
+        this.features = []
 
         this.LoadAgents(dataModel.agents)
         //console.table(this.agents)
-
         this.LoadEras(dataModel.eras)
         // console.table(this.eras)
-
         this.LoadStatuses(dataModel.statuses)
         // console.table(this.statuses)
-
         this.LoadCategories(dataModel.cats)
         // console.table(this.categories)
-
         this.LoadFeatures(dataModel.data)
         //console.table(this.datas)
-
     }
     LoadEras(eraObjects) {
         Object.keys(eraObjects).forEach(objKey => {
@@ -68,9 +63,28 @@ class CanIUseModel {
             } else {
                 // newFeatureModel = new FeatureModels.FeatureModel(objKey, featureObject)
             }
-            // newFeatureModel.getTagName()
-            this.datas.push(newFeatureModel)
-        });
+            this.features.push(newFeatureModel)
+        })
+    }
+
+    CheckFeatureOnPage_html(htmlString) {
+        // iterate data
+        this.features.forEach(featureModel => {
+            // console.table(featureModel)
+            let doesFeatureApply = false
+            if (featureModel != null) {
+                if (featureModel.feature != null) {
+                    doesFeatureApply = featureModel.feature.appliesToPage(htmlString)
+                    if (doesFeatureApply)
+                        console.log(`${featureModel.status} | Feature: ${featureModel.title} does apply to this page`)
+                    else {
+                        console.log(`${featureModel.status} | Feature: ${featureModel.title} does NOT apply to this page`)
+                        console.log(`${featureModel.spec} | ${featureModel.keyname}`)
+                        var _ = this;
+                    }
+                }
+            }
+        })
     }
 }
 
