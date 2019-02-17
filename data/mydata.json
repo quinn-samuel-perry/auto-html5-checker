@@ -28,7 +28,6 @@
             "nav",
             "aside"
         ],
-        "comparison": "OR",
         "testFile": "data/TestPages/Tags/html5semantics.html"
     }
 }

@@ -20,14 +20,14 @@ class HtmlFeature extends FeatureModel {
         //convert to array for comparison check
         applies = Array.from(applies)
         // default Comparison Selector is OR
-        this.SelectorComparison(applies)
+        let selectorOutput = this.SelectorComparison(applies)
 
-        if (applies) {
+        if (selectorOutput) {
             // console.info(`Found ${searchTagOutput.length} instances of <${this.tagName}> in page`)
         } else {
             // console.info(`This HTML feature does not apply to the page`)
         }
-        return applies
+        return selectorOutput
     }
 
 }

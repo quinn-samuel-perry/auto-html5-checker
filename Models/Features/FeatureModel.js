@@ -32,19 +32,16 @@ class FeatureModel {
         if (htmlString != "" && htmlString != null) {
             const dom = new JSDOM(htmlString)
             //get html element
-            const document = dom.window.document
-            const body = document.body
-            // surround selector in [] to make it searchable
-            const searchableSelector = `[${this.selector}]`
-            const selectorInstances = body.querySelectorAll(searchableSelector)
-            // console.info(selectorInstances)
-            if (selectorInstances == null) {
-                // console.warn(`Tag ${this.tagName} could not be found within file ${this.testFile}`)
-                return false
-            }
-            return selectorInstances
+            const body = dom.window.document.body
+
+            const makeSelectorSearchable = x => `[${x}]`
+
+            if (Array.isArray(this.tagAttribute))
+                return this.tagName.map(x => makeSelectorSearchable(x)).map(x => body.querySelectorAll(x))
+            else
+                return body.querySelectorAll(makeSelectorSearchable(this.tagAttribute))
         }
-        return false
+        return [null]
     }
     // returns false when nothing found
     searchHtmlTag(htmlString) {
@@ -57,12 +54,12 @@ class FeatureModel {
             //get body element
             const body = dom.window.document.body
 
-            if (Array.isArray(this.tagName)) {
+            if (Array.isArray(this.tagName))
                 return this.tagName.map(x => body.querySelectorAll(x))
-            } else
+            else
                 return body.querySelectorAll(this.tagName)
         }
-        return false
+        return [null]
     }
     loadDataFile() {
         // console.log(`Loading DataFile: ${this.StandardModel.keyname}`)
@@ -77,7 +74,6 @@ class FeatureModel {
 
             this.isAttribute = myDataThings.isAttribute
             this.tagAttribute = myDataThings.tagAttribute
-
         }
     }
     loadFile(filePath) {
@@ -89,7 +85,6 @@ class FeatureModel {
     SelectorComparison(comparisonOutput) {
         if (this.comparison === 'OR')
             return this.Selector_OR(comparisonOutput)
-
     }
 }
 
