@@ -16,5 +16,19 @@
         "tagAttribute": "draggable",
         "isAttribute": true,
         "testFile": "data/TestPages/Attributes/dragndrop.html"
+    },
+    "forms": {
+        "tag": "form",
+        "testFile": "data/TestPages/Tags/forms.html"
+    },
+    "html5semantic": {
+        "tag": [
+            "article",
+            "section",
+            "nav",
+            "aside"
+        ],
+        "comparison": "OR",
+        "testFile": "data/TestPages/Tags/html5semantics.html"
     }
 }
